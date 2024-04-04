@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c14c2011baa7de43929d93d5a4739c9, type: 3}
+  m_Name: 1, Intro, Client 1
+  m_EditorClassIdentifier: 
+  conversantName: Client
+  dialogueLines:
+  - Looks like we've got trouble!
+  - There's been a change of plans.  I need you to start immediately.
+  - The town is under attack, looks like someone figured out whats coming on that
+    train.
+  hasSaidDialogue: 0
+  isRepeatableDialogue: 0

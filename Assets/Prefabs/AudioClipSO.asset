@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f343b3bd43dd3804d9f313d09a6ea61f, type: 3}
+  m_Name: AudioClipSO
+  m_EditorClassIdentifier: 
+  BarBump:
+  - {fileID: 8300000, guid: 8484de1a5db0649af92c3696c88f6764, type: 3}
+  - {fileID: 8300000, guid: 067fff9fa110449a89d5107775c2c467, type: 3}
+  BoxSlideClosed:
+  - {fileID: 8300000, guid: 1b8751f3dba4b4b688db5c8cbb6c32bd, type: 3}
+  BoxSlideOpen:
+  - {fileID: 8300000, guid: c9d4883d1970f44678f04b98ddf44552, type: 3}
+  - {fileID: 8300000, guid: c9d4883d1970f44678f04b98ddf44552, type: 3}
+  Cloth:
+  - {fileID: 8300000, guid: 3e45ad8c684094c01b255f97917aad47, type: 3}
+  - {fileID: 8300000, guid: be9a069ff677d400d9d5e072b99fa6bc, type: 3}
+  FurnitureBump:
+  - {fileID: 8300000, guid: 457c2fe0857104ea7ba3ef6539337b9a, type: 3}
+  - {fileID: 8300000, guid: 741d5d835393446e1b82dc5c5e27a8f3, type: 3}
+  GlassDrop:
+  - {fileID: 8300000, guid: 45ebaf4415c0942c6b569535228cf8dc, type: 3}
+  - {fileID: 8300000, guid: 858d6621a88f04967bd9e9ff2f7c7f8b, type: 3}
+  HatDrop:
+  - {fileID: 8300000, guid: 5b695bf26f8d54073a9e5f89b10d820f, type: 3}
+  MetalCupDrop:
+  - {fileID: 8300000, guid: 1e4b0796170cc43a7ba72c858ab4ca2d, type: 3}
+  PaperFlap:
+  - {fileID: 8300000, guid: 2c41e0e4367ae4f3ba260779cf4d00e5, type: 3}
+  - {fileID: 8300000, guid: cb1a9edec8d3345dd8e530d490891cb8, type: 3}
+  - {fileID: 8300000, guid: 4160c3cd33ce44fa5964b6bc6ec7c5a1, type: 3}
+  Tumbleweed:
+  - {fileID: 8300000, guid: 1984b6d3c2008496d970d19f71cc95b8, type: 3}
+  - {fileID: 8300000, guid: 2fcf574ed10f640639a120a3938457c3, type: 3}
+  - {fileID: 8300000, guid: 19d900beae36741c1aa52d5b07007e89, type: 3}
+  WoodItemDrop:
+  - {fileID: 8300000, guid: 673d7767c520a469985cb49759328145, type: 3}
+  - {fileID: 8300000, guid: 9d0e2862a2e954546bd78fcf51a8ab4a, type: 3}
+  - {fileID: 8300000, guid: ce42aa9d3313140d38949492e4da9311, type: 3}
+  FootstepWood: []
+  FootstepWoodJump: []
+  FootstepWoodLand: []
+  FootstepWoodScuff: []
+  SandFootstepNew: []
+  SandNewJump: []
+  SandNewLand: []
+  indoorMusic: {fileID: 8300000, guid: 630bb467c42ec4fe289f09acd31e2929, type: 3}
+  outdoorMusic: {fileID: 8300000, guid: b4a57636a4cc64f6c822a6bd1aec36e9, type: 3}
+  rifleShoot: {fileID: 8300000, guid: 3037d80fd13eef549b3d0dd032cc030e, type: 3}
+  pistolShoot: {fileID: 8300000, guid: bde8a0f618fb68245b8a73c857c63be8, type: 3}
+  shotgunShoot: {fileID: 8300000, guid: 246ad85cd0676e8438cd840c06a1ac8f, type: 3}
+  reload: {fileID: 8300000, guid: fe7ad3e51f011fc419eab53405ce6026, type: 3}
+  barrelExplosion: {fileID: 8300000, guid: 8af1cc14fbbaff54ab64b6aa1e97f748, type: 3}
+  grenadeExplosion: {fileID: 8300000, guid: 85678744c05bcf842a51e303b9da3fc6, type: 3}
