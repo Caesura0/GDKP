@@ -34,6 +34,7 @@ public class LevelGrid : MonoBehaviour
     [SerializeField] bool debugGrid = false;
 
     [SerializeField] LayerMask walkableLayers;
+    private const float RAYCAST_HEIGHT = 2f;
     private void Awake()
     {
         if (Instance != null)
@@ -54,6 +55,9 @@ public class LevelGrid : MonoBehaviour
     private void Start()
     {
         PathFinding.Instance.Setup(height, width, cellSize);
+        SampleWalkableHeights();
+        if (GridEdgeBlockerData.Instance != null)
+            GridEdgeBlockerData.Instance.ApplyToPathFinding();
     }
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
@@ -74,6 +78,44 @@ public class LevelGrid : MonoBehaviour
     {
         return walkableLayers;
     }
+
+    private void SampleWalkableHeights()
+    {
+        for (int x = 0; x < GetWidth(); x++)
+        {
+            for (int z = 0; z < GetHeight(); z++)
+            {
+                GridPosition gridPosition = new GridPosition(x, z);
+
+                // Get the flat XZ world position from the grid
+                Vector3 flatWorldPos = GetWorldPosition(gridPosition);
+                Vector3 rayOrigin = flatWorldPos + Vector3.up * RAYCAST_HEIGHT;
+
+                if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, RAYCAST_HEIGHT * 2f, walkableLayers))
+                {
+                    gridSystem.GetGridObject(gridPosition).SetWorldY(hit.point.y);
+                }
+                else
+                {
+                    // No walkable surface found — keep Y at 0, or flag as non-walkable
+                    gridSystem.GetGridObject(gridPosition).SetWorldY(flatWorldPos.y);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Returns world position with terrain-sampled Y baked in.
+    /// Use this instead of GetWorldPosition() anywhere Y matters.
+    /// </summary>
+    public Vector3 GetWorldPositionWithY(GridPosition gridPosition)
+    {
+        Vector3 basePos = GetWorldPosition(gridPosition);
+        float sampledY = gridSystem.GetGridObject(gridPosition).GetWorldY();
+        return new Vector3(basePos.x, sampledY, basePos.z);
+    }
+
+
 
     public Unit GetUnitAtGridPosition(GridPosition gridPosition)
     {
@@ -188,6 +230,10 @@ public class LevelGrid : MonoBehaviour
         return gridObject.GetCoverType();
     }
 
+    public GridObject GetGridObject(GridPosition gridPosition)
+    {
+        return gridSystem.GetGridObject(gridPosition);
+    }
 
 
     /// <summary>
@@ -254,4 +300,6 @@ public class LevelGrid : MonoBehaviour
         }
         return coverType;
     }
+
+    public float GetCellSize() => cellSize;
 }

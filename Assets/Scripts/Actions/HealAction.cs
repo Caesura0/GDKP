@@ -11,7 +11,7 @@ public class HealAction : BaseAction
     public event EventHandler OnHealActionComplete;
 
     [SerializeField] int maxHealDistance = 1;
-    [SerializeField] int healAmount = -50;
+    [SerializeField] int healAmount = 50;
 
     Unit targetUnit;
     State state;
@@ -63,7 +63,7 @@ public class HealAction : BaseAction
                 state = State.AfterHealing;
                 float afterHitStateTime = 0.5f;
                 stateTimer = afterHitStateTime;
-                targetUnit.Damage(healAmount);
+                targetUnit.Heal(healAmount);
                 Instantiate(healVFX, targetUnit.GetWorldPosition(), Quaternion.Euler(-90, 0, 0));
                 OnHealActionStarted?.Invoke(this, EventArgs.Empty);
                 break;
@@ -135,7 +135,7 @@ public class HealAction : BaseAction
 
     public override bool IsValidActionThisTurn()
     {
-        return unit.GetIsStunned();
+        return !unit.GetIsStunned();
     }
 
 

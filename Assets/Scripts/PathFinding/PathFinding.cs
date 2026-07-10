@@ -20,6 +20,8 @@ public class PathFinding : MonoBehaviour
         gridSystem.GetGridObject(gridPosition).SetIsWalkable(v);
     }
 
+    public LayerMask GetObstaclesLayerMask() => obstaclesLayermask;
+
     int width;
     int height;
     float cellSize;
@@ -126,6 +128,13 @@ public class PathFinding : MonoBehaviour
                     closedList.Add(neighbourNode);
                     continue;
                 }
+                // ── Edge blocker check ──────────────────────────────────────
+                // If this specific edge between current and neighbour is blocked
+                // (e.g. a fence between them), skip it as if it were a wall.
+                if (currentNode.IsNeighbourBlocked(neighbourNode.GetGridPosition()))
+                {
+                    continue;
+                }
 
                 int tentativeGcost = currentNode.GetGCost() + CalculateDistance(currentNode.GetGridPosition(), neighbourNode.GetGridPosition());
                 if(tentativeGcost < neighbourNode.GetGCost())
@@ -189,6 +198,215 @@ public class PathFinding : MonoBehaviour
     //    return gridPositionList;
 
     //}
+
+
+    /// <summary>
+    /// Registers a blocked cardinal edge between two adjacent cells (bidirectionally),
+    /// then checks all four diagonal corners that share this edge and caches any
+    /// that are now fully pinched by two blocked cardinal edges.
+    /// </summary>
+    public void BlockEdge(GridPosition a, GridPosition b)
+    {
+        PathNode nodeA = GetNode(a.x, a.z);
+        PathNode nodeB = GetNode(b.x, b.z);
+        if (nodeA == null || nodeB == null) return;
+
+        // Register the cardinal edge on both sides
+        nodeA.BlockNeighbour(b);
+        nodeB.BlockNeighbour(a);
+
+        // Update diagonal caches for the two cells that are ENDPOINTS of this edge.
+        // Each endpoint can see two corners involving this edge.
+        UpdateDiagonalCaches(nodeA, nodeB, isBlocking: true);
+        UpdateDiagonalCaches(nodeB, nodeA, isBlocking: true);
+
+        // Update diagonal caches for the two cells that are PERPENDICULAR to this edge
+        // (the cells that would cut through the corner from the other side).
+        // These are NOT endpoints of the edge, so the above calls miss them entirely.
+        UpdateOppositeCornerCaches(a, b, isBlocking: true);
+    }
+
+    /// <summary>
+    /// Removes a blocked cardinal edge between two adjacent cells (bidirectionally),
+    /// then evicts any cached diagonal blocks that were relying on this edge.
+    /// Safe to call for edges that were never blocked.
+    /// </summary>
+    public void UnblockEdge(GridPosition a, GridPosition b)
+    {
+        PathNode nodeA = GetNode(a.x, a.z);
+        PathNode nodeB = GetNode(b.x, b.z);
+        if (nodeA == null || nodeB == null) return;
+
+        // Remove the cardinal edge on both sides
+        nodeA.UnblockNeighbour(b);
+        nodeB.UnblockNeighbour(a);
+
+        // Evict diagonal caches for the endpoint nodes
+        UpdateDiagonalCaches(nodeA, nodeB, isBlocking: false);
+        UpdateDiagonalCaches(nodeB, nodeA, isBlocking: false);
+
+        // Evict diagonal caches for the perpendicular (opposite corner) nodes
+        UpdateOppositeCornerCaches(a, b, isBlocking: false);
+    }
+
+    /// <summary>
+    /// Given a node and one of its cardinal neighbours (the edge that just changed),
+    /// evaluates all four diagonal corners that share that cardinal direction and
+    /// either caches or evicts the corresponding diagonal block on 'node'.
+    ///
+    /// Four corners are checked from 'node's perspective:
+    ///   The changed cardinal (node → cardinal) pairs with each perpendicular cardinal
+    ///   (node → perpA) and (node → perpB) to form two diagonals.
+    ///   The same logic is mirrored for the opposite cardinal direction.
+    /// </summary>
+    private void UpdateDiagonalCaches(PathNode node, PathNode changedCardinal, bool isBlocking)
+    {
+        GridPosition p    = node.GetGridPosition();
+        GridPosition card = changedCardinal.GetGridPosition();
+
+        // Work out which axis this cardinal edge is on
+        int dx = card.x - p.x;  // will be -1, 0, or +1
+        int dz = card.z - p.z;  // will be -1, 0, or +1
+
+        if (dx != 0 && dz == 0)
+        {
+            // Horizontal cardinal (left or right). The two diagonals it participates in
+            // are the ones that also step ±1 in Z. The other bracket edge for each is
+            // the straight up/down cardinal from 'node'.
+            TryUpdateDiagonal(node, card, new GridPosition(p.x,      p.z + 1), new GridPosition(card.x, p.z + 1), isBlocking);
+            TryUpdateDiagonal(node, card, new GridPosition(p.x,      p.z - 1), new GridPosition(card.x, p.z - 1), isBlocking);
+        }
+        else if (dz != 0 && dx == 0)
+        {
+            // Vertical cardinal (up or down). The two diagonals it participates in
+            // are the ones that also step ±1 in X. The other bracket edge for each is
+            // the straight left/right cardinal from 'node'.
+            TryUpdateDiagonal(node, card, new GridPosition(p.x + 1, p.z),      new GridPosition(p.x + 1, card.z), isBlocking);
+            TryUpdateDiagonal(node, card, new GridPosition(p.x - 1, p.z),      new GridPosition(p.x - 1, card.z), isBlocking);
+        }
+    }
+
+    /// <summary>
+    /// Evaluates a single diagonal corner from 'node':
+    ///   cardinal1Pos — one bracketing cardinal neighbour (the edge that just changed)
+    ///   cardinal2Pos — the other bracketing cardinal neighbour (perpendicular)
+    ///   diagonalPos  — the diagonal cell formed by both
+    ///
+    /// If isBlocking: caches the diagonal if EITHER cardinal is blocked.
+    ///   Since cardinal1 was just blocked by the caller, this always caches the diagonal.
+    /// If !isBlocking: only evicts the diagonal if cardinal2 is also clear.
+    ///   If cardinal2 is still blocked, the corner is still walled and diagonal stays blocked.
+    /// </summary>
+    private void TryUpdateDiagonal(PathNode node,
+                                   GridPosition cardinal1Pos,
+                                   GridPosition cardinal2Pos,
+                                   GridPosition diagonalPos,
+                                   bool isBlocking)
+    {
+        // Make sure both cardinal neighbours and the diagonal cell actually exist on the grid
+        if (GetNode(cardinal2Pos.x, cardinal2Pos.z) == null) return;
+        if (GetNode(diagonalPos.x,  diagonalPos.z)  == null) return;
+
+        if (isBlocking)
+        {
+            // Cardinal1 was just blocked. Block the diagonal if EITHER bracketing
+            // cardinal is walled — touching any wall at a corner prevents cutting through.
+            // Since cardinal1 is now blocked, this is always true, so always cache.
+            node.BlockNeighbour(diagonalPos);
+        }
+        else
+        {
+            // Cardinal1 was just unblocked. Only evict the diagonal if cardinal2 is
+            // also clear — if cardinal2 is still blocked, the corner is still walled
+            // and diagonal movement through it must remain blocked.
+            if (!node.IsNeighbourBlocked(cardinal2Pos))
+                node.UnblockNeighbour(diagonalPos);
+        }
+
+    }
+
+    /// <summary>
+    /// For each corner that edge A-B participates in, updates the diagonal cache of the
+    /// two cells that sit OPPOSITE the edge — i.e. the cells that would cut through
+    /// that corner diagonally without being an endpoint of the edge itself.
+    ///
+    /// Every cardinal edge borders two corners (one on each lateral side). In each
+    /// corner, four cells meet. UpdateDiagonalCaches covers the two endpoint cells;
+    /// this method covers the other two.
+    /// </summary>
+    private void UpdateOppositeCornerCaches(GridPosition a, GridPosition b, bool isBlocking)
+    {
+        int dx = b.x - a.x;
+        int dz = b.z - a.z;
+
+        if (dx != 0 && dz == 0)
+        {
+            // Horizontal edge (A and B share the same Z, differ in X).
+            // Perpendicular cells are the ones directly above and below each endpoint.
+            int az = a.z;
+
+            // Bottom corner (z - 1):
+            //   node(a.x, az-1) diagonals to B, bracketed by A and (b.x, az-1)
+            //   node(b.x, az-1) diagonals to A, bracketed by B and (a.x, az-1)
+            UpdatePerpendicularCornerDiagonal(new GridPosition(a.x, az - 1), b, a, new GridPosition(b.x, az - 1), isBlocking);
+            UpdatePerpendicularCornerDiagonal(new GridPosition(b.x, az - 1), a, b, new GridPosition(a.x, az - 1), isBlocking);
+
+            // Top corner (z + 1):
+            UpdatePerpendicularCornerDiagonal(new GridPosition(a.x, az + 1), b, a, new GridPosition(b.x, az + 1), isBlocking);
+            UpdatePerpendicularCornerDiagonal(new GridPosition(b.x, az + 1), a, b, new GridPosition(a.x, az + 1), isBlocking);
+        }
+        else if (dz != 0 && dx == 0)
+        {
+            // Vertical edge (A and B share the same X, differ in Z).
+            // Perpendicular cells are the ones directly left and right of each endpoint.
+            int ax = a.x;
+
+            // Left corner (x - 1):
+            //   node(ax-1, a.z) diagonals to B, bracketed by A and (ax-1, b.z)
+            //   node(ax-1, b.z) diagonals to A, bracketed by B and (ax-1, a.z)
+            UpdatePerpendicularCornerDiagonal(new GridPosition(ax - 1, a.z), b, a, new GridPosition(ax - 1, b.z), isBlocking);
+            UpdatePerpendicularCornerDiagonal(new GridPosition(ax - 1, b.z), a, b, new GridPosition(ax - 1, a.z), isBlocking);
+
+            // Right corner (x + 1):
+            UpdatePerpendicularCornerDiagonal(new GridPosition(ax + 1, a.z), b, a, new GridPosition(ax + 1, b.z), isBlocking);
+            UpdatePerpendicularCornerDiagonal(new GridPosition(ax + 1, b.z), a, b, new GridPosition(ax + 1, a.z), isBlocking);
+        }
+    }
+
+    /// <summary>
+    /// Updates the diagonal cache entry for perpPos → diagTarget.
+    ///   bracket1 — the corner cell that is an endpoint of the changed edge
+    ///   bracket2 — the other lateral cell framing the corner from perpPos's side
+    ///
+    /// If blocking:   always caches the diagonal (any wall = corner is walled).
+    /// If unblocking: only evicts if BOTH brackets are also clear from perpPos's
+    ///                perspective, because either bracket still being blocked means
+    ///                the corner is still walled from perpPos's side.
+    /// </summary>
+    private void UpdatePerpendicularCornerDiagonal(
+        GridPosition perpPos, GridPosition diagTarget,
+        GridPosition bracket1,  GridPosition bracket2,
+        bool isBlocking)
+    {
+        PathNode perpNode = GetNode(perpPos.x, perpPos.z);
+        if (perpNode == null) return;
+        if (GetNode(diagTarget.x, diagTarget.z) == null) return;
+
+        if (isBlocking)
+        {
+            // Any wall touching a corner blocks the diagonal through it.
+            perpNode.BlockNeighbour(diagTarget);
+        }
+        else
+        {
+            // Only evict the diagonal if neither bracketing cardinal is still blocked
+            // from perpPos's perspective. If either bracket is still walled, the
+            // corner is still closed and perpPos must not be allowed to cut through.
+            if (!perpNode.IsNeighbourBlocked(bracket1) && !perpNode.IsNeighbourBlocked(bracket2))
+                perpNode.UnblockNeighbour(diagTarget);
+        }
+    }
+
 
     public int CalculateDistance(GridPosition gridPositionA, GridPosition gridPositionB)
     {

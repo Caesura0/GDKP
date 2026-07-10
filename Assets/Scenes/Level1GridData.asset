@@ -1,0 +1,1618 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af691550fab8ee649b7d89be324ee99a, type: 3}
+  m_Name: Level1GridData
+  m_EditorClassIdentifier: 
+  bakedWidth: 20
+  bakedHeight: 20
+  bakedCellSize: 2
+  cells:
+  - x: 0
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 0
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 0
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 0
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 0
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 0
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 0
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987624
+  - x: 0
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 0
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 0
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 0
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 0
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 0
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 0
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 0
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 0
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 0
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 0
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 0
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 0
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 1
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 1
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 1
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 1
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 1
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 1
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 1
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987624
+  - x: 1
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 1
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 1
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 1
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 1
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 1
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 1
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 1
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 1
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 1
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 1
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 1
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 1
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 2
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 2
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 2
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 2
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 2
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 2
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 2
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987624
+  - x: 2
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 2
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 2
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 2
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 2
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 2
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 2
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 2
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 2
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 2
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 2
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 2
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 2
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 3
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 3
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 3
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 3
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 3
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 3
+    z: 5
+    isWalkable: 1
+    worldY: -0.000002837182
+  - x: 3
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987624
+  - x: 3
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 3
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 3
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 3
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 3
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 3
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 3
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 3
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 3
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 3
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 3
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 3
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 3
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 4
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 4
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 4
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 4
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 4
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 4
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 4
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987629
+  - x: 4
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 4
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 4
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 4
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 4
+    z: 11
+    isWalkable: 0
+    worldY: -0.0000014066698
+  - x: 4
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 4
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 4
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 4
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 4
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 4
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 4
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 4
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 5
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 5
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 5
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 5
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 5
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 5
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 5
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987629
+  - x: 5
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 5
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 5
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 5
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 5
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 5
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 5
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 5
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 5
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 5
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 5
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 5
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 5
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 6
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 6
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 6
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524372
+  - x: 6
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140188
+  - x: 6
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 6
+    z: 5
+    isWalkable: 1
+    worldY: -0.000002837182
+  - x: 6
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987626
+  - x: 6
+    z: 7
+    isWalkable: 1
+    worldY: -0.0000023603443
+  - x: 6
+    z: 8
+    isWalkable: 1
+    worldY: -0.000002121926
+  - x: 6
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 6
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 6
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 6
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 6
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 6
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 6
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 6
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 6
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 6
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 6
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 7
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 7
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 7
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 7
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 7
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 7
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 7
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987629
+  - x: 7
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 7
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 7
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 7
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 7
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 7
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 7
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 7
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 7
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 7
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 7
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 7
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 7
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 8
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 8
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 8
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 8
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 8
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 8
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 8
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987629
+  - x: 8
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 8
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 8
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 8
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 8
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 8
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 8
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 8
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 8
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 8
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 8
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 8
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 8
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 9
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 9
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 9
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 9
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 9
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 9
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 9
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987629
+  - x: 9
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 9
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 9
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 9
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 9
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 9
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 9
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 9
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 9
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 9
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 9
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 9
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 9
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 10
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 10
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 10
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 10
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 10
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 10
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371815
+  - x: 10
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987626
+  - x: 10
+    z: 7
+    isWalkable: 1
+    worldY: -0.0000023603443
+  - x: 10
+    z: 8
+    isWalkable: 1
+    worldY: -0.000002121926
+  - x: 10
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835075
+  - x: 10
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450887
+  - x: 10
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066699
+  - x: 10
+    z: 12
+    isWalkable: 0
+    worldY: -0.0000011682514
+  - x: 10
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 10
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 10
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 10
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 10
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 10
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 10
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 11
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 11
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 11
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524372
+  - x: 11
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140188
+  - x: 11
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 11
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 11
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987629
+  - x: 11
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 11
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 11
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 11
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 11
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 11
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 11
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 11
+    z: 14
+    isWalkable: 1
+    worldY: -0.00000069141373
+  - x: 11
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 11
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 11
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 11
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 11
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 12
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 12
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 12
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524372
+  - x: 12
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140188
+  - x: 12
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 12
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 12
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987629
+  - x: 12
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 12
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 12
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 12
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 12
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 12
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 12
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 12
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914141
+  - x: 12
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 12
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 12
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 12
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 12
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 13
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 13
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 13
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 13
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 13
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 13
+    z: 5
+    isWalkable: 1
+    worldY: -0.000002837182
+  - x: 13
+    z: 6
+    isWalkable: 1
+    worldY: 0.63400304
+  - x: 13
+    z: 7
+    isWalkable: 1
+    worldY: -0.0000023603443
+  - x: 13
+    z: 8
+    isWalkable: 1
+    worldY: -0.000002121926
+  - x: 13
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835075
+  - x: 13
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450887
+  - x: 13
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066699
+  - x: 13
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682514
+  - x: 13
+    z: 13
+    isWalkable: 1
+    worldY: -0.00000092983305
+  - x: 13
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914139
+  - x: 13
+    z: 15
+    isWalkable: 1
+    worldY: -0.00000045299547
+  - x: 13
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 13
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 13
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 13
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 14
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 14
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 14
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 14
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 14
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 14
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 14
+    z: 6
+    isWalkable: 1
+    worldY: 0.98
+  - x: 14
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 14
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 14
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 14
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450888
+  - x: 14
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 14
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 14
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 14
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914141
+  - x: 14
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 14
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 14
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 14
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226016
+  - x: 14
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 15
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 15
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 15
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 15
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 15
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 15
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 15
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987626
+  - x: 15
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 15
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 15
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 15
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450887
+  - x: 15
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 15
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 15
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 15
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914139
+  - x: 15
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 15
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 15
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 15
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226
+  - x: 15
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 16
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 16
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 16
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 16
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 16
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 16
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 16
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987626
+  - x: 16
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 16
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 16
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 16
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450887
+  - x: 16
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 16
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 16
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 16
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914139
+  - x: 16
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 16
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 16
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 16
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226
+  - x: 16
+    z: 19
+    isWalkable: 1
+    worldY: 0.00000050067894
+  - x: 17
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 17
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 17
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 17
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 17
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 17
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 17
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987626
+  - x: 17
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 17
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 17
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 17
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450887
+  - x: 17
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 17
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 17
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 17
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914139
+  - x: 17
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 17
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 17
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 17
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226
+  - x: 17
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 18
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 18
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 18
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 18
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 18
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 18
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 18
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987626
+  - x: 18
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 18
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 18
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 18
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450887
+  - x: 18
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 18
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 18
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 18
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914139
+  - x: 18
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 18
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 18
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 18
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226
+  - x: 18
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791
+  - x: 19
+    z: 0
+    isWalkable: 1
+    worldY: -0.0000040292744
+  - x: 19
+    z: 1
+    isWalkable: 1
+    worldY: -0.000003790856
+  - x: 19
+    z: 2
+    isWalkable: 1
+    worldY: -0.0000035524376
+  - x: 19
+    z: 3
+    isWalkable: 1
+    worldY: -0.0000033140193
+  - x: 19
+    z: 4
+    isWalkable: 1
+    worldY: -0.0000030756
+  - x: 19
+    z: 5
+    isWalkable: 1
+    worldY: -0.0000028371817
+  - x: 19
+    z: 6
+    isWalkable: 1
+    worldY: -0.0000025987626
+  - x: 19
+    z: 7
+    isWalkable: 1
+    worldY: -0.000002360344
+  - x: 19
+    z: 8
+    isWalkable: 1
+    worldY: -0.0000021219257
+  - x: 19
+    z: 9
+    isWalkable: 1
+    worldY: -0.0000018835073
+  - x: 19
+    z: 10
+    isWalkable: 1
+    worldY: -0.0000016450887
+  - x: 19
+    z: 11
+    isWalkable: 1
+    worldY: -0.0000014066698
+  - x: 19
+    z: 12
+    isWalkable: 1
+    worldY: -0.0000011682513
+  - x: 19
+    z: 13
+    isWalkable: 1
+    worldY: -0.0000009298328
+  - x: 19
+    z: 14
+    isWalkable: 1
+    worldY: -0.0000006914139
+  - x: 19
+    z: 15
+    isWalkable: 1
+    worldY: -0.0000004529953
+  - x: 19
+    z: 16
+    isWalkable: 1
+    worldY: -0.00000021457687
+  - x: 19
+    z: 17
+    isWalkable: 1
+    worldY: 0.000000023841558
+  - x: 19
+    z: 18
+    isWalkable: 1
+    worldY: 0.00000026226
+  - x: 19
+    z: 19
+    isWalkable: 1
+    worldY: 0.0000005006791

@@ -63,24 +63,16 @@ public class ShootAction : BaseAttackAction
         shootingUnit = unit
         });
 
-        targetUnit.GetGridPosition();
-        unit.GetGridPosition();
-
-        PathFinding.Instance.FindPath(unit.GetGridPosition(), targetUnit.GetGridPosition(), out int pathLength);
-
-        float distanceModifier = pathLength / 10; //calculates the path score and divides it by 10, gets the actual spaces
-        //Debug.Log(distanceModifier + " DistanceModifier");
-        float accuarcyReduction = distanceModifier / maxAttackDistance;  //returns a value between 0 and 1, 1 will apply the max"distance penilty"
-        //Debug.Log(accuarcyReduction + " AccuarcyReduction");
-        float hitChance =  (weaponAccuracy - accuarcyReduction * distancePenaltyWeight) * 100 ;
+        float hitChance = CalculateAccuracy(unit.GetGridPosition(), targetUnit.GetGridPosition());
 
         currentAmmo--;
 
         //Debug.Log(hitChance + " HitChance"); 
 
-        if (UnityEngine.Random.Range(1, 101) < hitChance)
+        if (UnityEngine.Random.value <= hitChance)
         {
-            targetUnit.Damage(damage);
+            int finalDamage = CalculateDamage(targetUnit.GetGridPosition());
+            targetUnit.Damage(finalDamage);
             didHit = true;
 
         }
@@ -199,26 +191,20 @@ public class ShootAction : BaseAttackAction
 
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPostion)
     {
-
         Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPostion);
+        int finalDamage = CalculateDamage(targetUnit.GetGridPosition());
+        float hitChance = CalculateAccuracy(unit.GetGridPosition(), gridPostion);
 
-        if (targetUnit.GetCurrentHealth() <= damage )
+        if (targetUnit.GetCurrentHealth() <= finalDamage)
         {
-
-
-            Debug.LogWarning(unit.name + " shoot actions returned " + (baseAiActionWeight + baseAiKillWeight + Mathf.RoundToInt((targetUnit.GetHealthNormalized()))));
-            return new EnemyAIAction
-            {
-                gridPosition = gridPostion,
-                actionValue = baseAiActionWeight + baseAiKillWeight + Mathf.RoundToInt((targetUnit.GetHealthNormalized()) ),
-            };
+            // Kill shot available: heavily favour, but still weight by hit chance
+            int actionValue = Mathf.RoundToInt((baseAiActionWeight + baseAiKillWeight) * hitChance);
+            return new EnemyAIAction { gridPosition = gridPostion, actionValue = actionValue };
         }
-        Debug.LogWarning(unit.name + " shoot actions returned " + (baseAiActionWeight + baseAiKillWeight + Mathf.RoundToInt((targetUnit.GetHealthNormalized()))));
-        return new EnemyAIAction
-        {
-            gridPosition = gridPostion,
-            actionValue = baseAiActionWeight + Mathf.RoundToInt((1 - targetUnit.GetHealthNormalized())),
-        };
+
+        // No kill: weight damage dealt against target health, scaled by hit chance
+        int nonKillValue = Mathf.RoundToInt(baseAiActionWeight * (1 - targetUnit.GetHealthNormalized() + 0.1f) * hitChance);
+        return new EnemyAIAction { gridPosition = gridPostion, actionValue = nonKillValue };
     }
 
 
@@ -251,7 +237,8 @@ public class ShootAction : BaseAttackAction
         foreach(GridPosition actionPosition in availbleGridPositionActionList)
         {
             Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(actionPosition);
-            int killDamageCalculation = (int)targetUnit.GetCurrentHealth() - damage;
+            int finalDamage = CalculateDamage(actionPosition);
+            int killDamageCalculation = (int)targetUnit.GetCurrentHealth() - finalDamage;
             if ( killDamageCalculation >= 0)
             {
                 gridPositionPoints.Add(gridPosition, killDamageCalculation);           
@@ -269,29 +256,6 @@ public class ShootAction : BaseAttackAction
         }
         killShotGridPositionDictionary = gridPositionPoints;
         return bestActionGridPositionList;
-    }
-
-    /// <summary>
-    /// Just checks if you will kill any enemy at this grid position
-    /// </summary>
-    /// <param name="gridPosition"></param>
-    /// <returns></returns>
-    /// 
-
-    public override bool KillShotAvailbleAtGridPosition(GridPosition gridPosition)
-    {
-
-        List<GridPosition> availbleGridPositionActionList = GetValidActionGridPositionList(gridPosition);
-        foreach (GridPosition actionPosition in availbleGridPositionActionList)
-        {
-            Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(actionPosition);
-            int killDamageCalculation = (int)targetUnit.GetCurrentHealth() - damage;
-            if (killDamageCalculation >= 0)
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
 

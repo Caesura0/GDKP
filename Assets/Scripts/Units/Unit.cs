@@ -103,6 +103,11 @@ public class Unit : MonoBehaviour
         healthSystem.Damage(damageAmount);
     }
 
+    public void Heal(int healAmount)
+    {
+        healthSystem.Heal(healAmount);
+    }
+
     public void UpdateCoverType()
     {
         coverType = LevelGrid.Instance.GetBestCoverTypeAtGridPosition(gridPosition);
@@ -384,23 +389,6 @@ public class Unit : MonoBehaviour
         return aIType;
     }
 
-    public float CalculateAccuracy(GridPosition unitGridPosition, BaseAttackAction attackAction)
-    {
-        PathFinding.Instance.FindPath(GetGridPosition(), unitGridPosition, out int pathLength);
-        if (debugMode) { Debug.LogWarning("Path " + pathLength); }
-        if (debugMode) { Debug.LogWarning("UnitGridPosition " + unitGridPosition); }
-
-        float enemyCoverPercentReduction = (100f - LevelGrid.Instance.GetCoverAccuracyReduction(unitGridPosition)) / 100f;
-        if (debugMode) { Debug.LogWarning("enemyCoverPercentReduction " + enemyCoverPercentReduction); }
-        float distanceModifier = pathLength / 10; //calculates the path score and divides it by 10, gets the actual spaces
-        if (debugMode) { Debug.LogWarning("pathLength " + pathLength / 10); }
-        float accuarcyReduction = distanceModifier / attackAction.GetMaxAttackDistance();  //returns a value between 0 and 1, 1 will apply the max"distance penilty"
-        if (debugMode) { Debug.LogWarning("accuarcyReduction " + accuarcyReduction); }
-        if (debugMode) { Debug.LogWarning("GetMaxAttackDistance " + attackAction.GetMaxAttackDistance()); }
-        float hitChance = (attackAction.GetAccuracy() - accuarcyReduction * attackAction.GetDistancePenaltyWeight()) * enemyCoverPercentReduction * 100;
-        if (debugMode) { Debug.LogWarning("(" + attackAction.GetAccuracy() + " - " + attackAction.GetMaxAttackDistance() + " * " + attackAction.GetDistancePenaltyWeight() + ")" + enemyCoverPercentReduction + " * 100"); }
-        return hitChance;
-    }
 
     public void SetIsStunned(bool isStunned)
     {

@@ -10,6 +10,7 @@ public class HealthSystem : MonoBehaviour
 
     public event EventHandler onDie;
     public event EventHandler onDamaged;
+    public event EventHandler onHealed;
 
     private void Awake()
     {
@@ -25,6 +26,12 @@ public class HealthSystem : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Heal(int healAmount)
+    {
+        health = Mathf.Clamp(health + healAmount, 0, healthMax);
+        onHealed?.Invoke(this, EventArgs.Empty);
     }
 
     private void Die()

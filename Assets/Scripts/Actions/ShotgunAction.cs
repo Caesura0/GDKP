@@ -84,14 +84,15 @@ public class ShotgunAction : BaseAttackAction
 
         if(targetUnit != null)
         {
-            float hitChance = unit.CalculateAccuracy(targetUnit.GetGridPosition(), this);
+            float hitChance = CalculateAccuracy(unit.GetGridPosition(), targetUnit.GetGridPosition());
 
             currentAmmo--;
             //Debug.Log(hitChance + " HitChance");
 
-            if (UnityEngine.Random.Range(1, 101) < hitChance)
+            if (UnityEngine.Random.value <= hitChance)
             {
-                targetUnit.Damage(damage);
+                int finalDamage = CalculateDamage(targetUnit.GetGridPosition());
+                targetUnit.Damage(finalDamage);
 
             }
 
@@ -142,22 +143,21 @@ public class ShotgunAction : BaseAttackAction
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPostion)
     {
         Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPostion);
+        int finalDamage = CalculateDamage(targetUnit.GetGridPosition());
+        float hitChance = CalculateAccuracy(unit.GetGridPosition(), gridPostion);
 
-        if (targetUnit.GetCurrentHealth() <= damage)
+        if (targetUnit.GetCurrentHealth() <= finalDamage)
         {
-            return new EnemyAIAction
-            {
-                gridPosition = gridPostion,
-                actionValue = baseAiActionWeight + baseAiKillWeight + Mathf.RoundToInt((targetUnit.GetHealthNormalized()) * 100),
-            };
+            // Kill shot available: heavily favour, but still weight by hit chance
+            int actionValue = Mathf.RoundToInt((baseAiActionWeight + baseAiKillWeight) * hitChance);
+            return new EnemyAIAction { gridPosition = gridPostion, actionValue = actionValue };
         }
 
-        return new EnemyAIAction
-        {
-            gridPosition = gridPostion,
-            actionValue = baseAiActionWeight + Mathf.RoundToInt((1 - targetUnit.GetHealthNormalized()) * 100),
-        };
+        // No kill: weight damage dealt against target health, scaled by hit chance
+        int nonKillValue = Mathf.RoundToInt(baseAiActionWeight * (1 - targetUnit.GetHealthNormalized() + 0.1f) * hitChance);
+        return new EnemyAIAction { gridPosition = gridPostion, actionValue = nonKillValue };
     }
+
 
 
 

@@ -72,6 +72,8 @@ public class OverwatchAction : BaseAttackAction
         Debug.Log(targetUnit.name + " sender " + unit.GetWorldPosition());
         if (targetUnit != null)
         {
+            if (targetUnit.IsEnemy() == unit.IsEnemy()) { return; } // Don't shoot friendlies
+
             if (overwatchGridPositionList.Contains(targetUnit.GetGridPosition()))
             {
                 Debug.Log("overwatch location detected");
@@ -155,7 +157,7 @@ public class OverwatchAction : BaseAttackAction
 
     public override bool IsValidActionThisTurn()
     {
-        throw new NotImplementedException();
+        return !unit.GetIsStunned();
     }
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)

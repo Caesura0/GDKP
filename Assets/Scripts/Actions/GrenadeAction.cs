@@ -84,11 +84,10 @@ public class GrenadeAction : BaseAction
                 break;
             case State.Throwing:
                 state = State.Cooloff;
-                float coolOffStateTime = .5f;
-                stateTimer = coolOffStateTime;
+                // Wait for the grenade projectile callback to call ActionComplete
+                stateTimer = float.MaxValue; 
                 break;
             case State.Cooloff:
-                ActionComplete();
                 break;
         }
     }

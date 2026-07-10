@@ -12,7 +12,6 @@ public class SwordAction : BaseAttackAction
     public event EventHandler OnSwordActionComplete;
 
 
-    [SerializeField] int meleeDamage = 100;
     [SerializeField] float afterHitStateTime = 0.5f;
     [SerializeField] float beforeHitStateTime = 0.7f;
 
@@ -50,7 +49,7 @@ public class SwordAction : BaseAttackAction
             case State.SwingingSwordBeforeHit:
                 state = State.SwingingSwordAfterHit;
                 stateTimer = afterHitStateTime;
-                targetUnit.Damage(meleeDamage);
+                targetUnit.Damage(damage);
                 OnAnySwordHit?.Invoke(this, EventArgs.Empty);
                 break;
             case State.SwingingSwordAfterHit:
@@ -112,7 +111,7 @@ public class SwordAction : BaseAttackAction
 
     public override bool IsValidActionThisTurn()
     {
-        return unit.GetIsStunned();
+        return !unit.GetIsStunned();
     }
 
     public override void TakeReloadAction(Action onActionComplete)

@@ -104,13 +104,13 @@ public class UnitActionSystem : MonoBehaviour
 
 
 
-        float hitChance = selectedUnit.CalculateAccuracy(unitGridPosition, attackAction);
+        float hitChance = attackAction.CalculateAccuracy(selectedUnit.GetGridPosition(), unitGridPosition);
        // Debug.Log(hitChance + " HitChance");
 
 
         actionUI.ShowActionPanel();
-        actionUI.SetAccuracyText("Hit = " + hitChance);
-        actionUI.SetAttackText("Damage = " + attackAction.GetWeaponDamage());
+        actionUI.SetAccuracyText("Hit = " + Mathf.RoundToInt(hitChance * 100) + "%");
+        actionUI.SetAttackText("Damage = " + attackAction.CalculateDamage(unitGridPosition));
         actionUI.SetAmmoText(attackAction.GetCurrentAmmo() + " / " + attackAction.GetMaxAmmo());
         actionUI.confirmButton.onClick.AddListener(SetConfirmedFlag);
         actionUI.cancelButton.onClick.AddListener(SetCancelFlag);

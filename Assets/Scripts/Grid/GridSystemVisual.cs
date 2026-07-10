@@ -65,9 +65,16 @@ public class GridSystemVisual : MonoBehaviour
             for (int z = 0; z < LevelGrid.Instance.GetHeight(); z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
-                Transform gridSystemVisualSingleTransform =  
-                    Instantiate(gridSystemVisualSinglePrefab, LevelGrid.Instance.GetWorldPosition(gridPosition), Quaternion.identity);
-                gridSystemVisualSingleArray[x, z] = gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
+
+                Vector3 worldPos = LevelGrid.Instance.GetWorldPosition(gridPosition);
+
+
+                worldPos.y = LevelGrid.Instance.GetGridObject(gridPosition).GetWorldY() + 0.2f; // tune this offset to sit on surface
+
+                Transform gridSystemVisualSingleTransform =
+                    Instantiate(gridSystemVisualSinglePrefab, worldPos, Quaternion.identity);
+                gridSystemVisualSingleArray[x, z] =
+                    gridSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
             }
         }
 
@@ -122,22 +129,21 @@ public class GridSystemVisual : MonoBehaviour
         pathLineRenderer.enabled = true;
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
         GridPosition mousePosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
-        List<GridPosition> calculatedPath = PathFinding.Instance.FindPath(selectedUnit.GetGridPosition(), mousePosition, out int pathLength);
-
+        List<GridPosition> calculatedPath = PathFinding.Instance.FindPath(
+            selectedUnit.GetGridPosition(), mousePosition, out int pathLength);
 
         if (calculatedPath.Count() <= 2) { pathLineRenderer.positionCount = 0; return; }
 
         pathLineRenderer.positionCount = calculatedPath.Count;
-
-        pathLineRenderer
-                            .SetPositions(calculatedPath
-                                .Select(p =>
-                                {
-                                    var v = LevelGrid.Instance.GetWorldPosition(p);
-                                    v.y += 0.1f;
-                                    return v;
-                                })
-                                .ToArray());
+        pathLineRenderer.SetPositions(
+            calculatedPath
+                .Select(p => {
+                    var v = LevelGrid.Instance.GetWorldPositionWithY(p); // baked Y
+                    v.y += 0.1f;                                         // small hover offset
+                    return v;
+                })
+                .ToArray()
+        );
     }
 
     public void HideAllGridPositions()

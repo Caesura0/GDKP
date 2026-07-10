@@ -53,28 +53,21 @@ public class MoveAction : BaseAction
         {
             currentPositionIndex++;
 
-            if (currentPositionIndex < positionList.Count)
-            {
-                Vector3 nextPos = positionList[currentPositionIndex];
-                //Debug.Log(positionList[currentPositionIndex] + "Pre update");
-                nextPos.y = LevelGrid.Instance.GetLevelGridTransform().y + 1.8f;
-                RaycastHit hit;
-                Physics.Raycast(nextPos, Vector3.down, out hit, LevelGrid.Instance.GetWalkableLayers());
-                Vector3 newTargetPosition = positionList[currentPositionIndex];
-                newTargetPosition.y = hit.point.y;
-                positionList[currentPositionIndex] = newTargetPosition;
-               // Debug.Log(positionList[currentPositionIndex] + "Post update");
-               // Quaternion rotatation = transform.rotation;
-                //targetPosition = transform.position;
-                //.x = 0f;
-                //transform.rotation = rotatation;
-            }
+            //if (currentPositionIndex < positionList.Count)
+            //{
+            //    Vector3 nextPos = positionList[currentPositionIndex];
+            //    //Debug.Log(positionList[currentPositionIndex] + "Pre update");
+            //    nextPos.y = LevelGrid.Instance.GetLevelGridTransform().y + 1.8f;
+            //    positionList[currentPositionIndex] = newTargetPosition;
+            //   // Debug.Log(positionList[currentPositionIndex] + "Post update");
+            //   // Quaternion rotatation = transform.rotation;
+            //    //targetPosition = transform.position;
+            //    //.x = 0f;
+            //    //transform.rotation = rotatation;
+            //}
 
             if (currentPositionIndex >= positionList.Count)
             {
-                Quaternion rotatation = transform.rotation;
-                rotatation.x = 0f;
-                transform.rotation = rotatation;
 
                 OnStopMoving?.Invoke(this, EventArgs.Empty);
                 ActionComplete();

@@ -15,7 +15,6 @@ public class KickAction : BaseAttackAction
     [SerializeField] int knockbackMultiplier = 3;
 
 
-    [SerializeField] int meleeDamage = 20;
     [SerializeField] float afterHitStateTime = 0.5f;
     [SerializeField] float beforeHitStateTime = 0.7f;
 
@@ -55,7 +54,7 @@ public class KickAction : BaseAttackAction
             case State.KickBeforeHit:
                 state = State.SwingingSwordAfterHit;
                 stateTimer = afterHitStateTime;
-                Kick(meleeDamage);//maybe i should pass ActionComplete() as a delegate here
+                Kick(damage);//maybe i should pass ActionComplete() as a delegate here
                 OnAnyKickHit?.Invoke(this, EventArgs.Empty);
                 break;
             case State.SwingingSwordAfterHit:

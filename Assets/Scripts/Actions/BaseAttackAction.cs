@@ -34,10 +34,12 @@ public abstract class BaseAttackAction : BaseAction
     [SerializeField] protected int maxAttackDistance = 7;
     [SerializeField] protected int minShootDistance = 1;
     [SerializeField] protected int damage = 40;
+    [SerializeField] protected bool scalesDamageWithDistance = false;
+    [SerializeField] protected int maxCloseRangeBonus = 20;
     [Range(0, 1.5f)]
-    [SerializeField] protected  float weaponAccuracy = 9;
-    [Range(0, .8f)]
-    [SerializeField] protected  float distancePenaltyWeight = 9;
+    [SerializeField] protected  float weaponAccuracy = 0.9f;
+    [Range(0, .9f)]
+    [SerializeField] protected  float distancePenaltyWeight = 0.9f;
 
     [SerializeField] protected float coolOffStateTime = 0.5f;
     [SerializeField] protected float shootingStateTime = 0.1f;
@@ -89,8 +91,9 @@ public abstract class BaseAttackAction : BaseAction
         foreach (GridPosition actionPosition in availbleGridPositionActionList)
         {
             Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(actionPosition);
-            int killDamageCalculation = (int)targetUnit.GetCurrentHealth() - damage;
-            if (killDamageCalculation >= 0)
+            int finalDamage = CalculateDamage(actionPosition);
+            int killDamageCalculation = (int)targetUnit.GetCurrentHealth() - finalDamage;
+            if (killDamageCalculation <= 0)
             {
                 return true;
             }
@@ -124,6 +127,39 @@ public abstract class BaseAttackAction : BaseAction
     {
         return minShootDistance;
     }
+    public virtual float CalculateAccuracy(GridPosition unitGridPosition, GridPosition targetPosition)
+    {
+        int distance = Mathf.Abs(unitGridPosition.x - targetPosition.x) + Mathf.Abs(unitGridPosition.z - targetPosition.z);
+
+        float enemyCoverPercentReduction = (100f - LevelGrid.Instance.GetCoverAccuracyReduction(targetPosition)) / 100f;
+        float accuracyReduction = (float)distance / maxAttackDistance;
+
+        float hitChance = (weaponAccuracy - accuracyReduction * distancePenaltyWeight) * enemyCoverPercentReduction;
+
+        // Clamp to valid probability range. Use a 1% minimum floor so shots
+        // are never mechanically impossible — only extremely unlikely.
+        return Mathf.Clamp(hitChance, 0.01f, 1f);
+    }
+
+    public virtual int CalculateDamage(GridPosition targetPosition)
+    {
+        if (!scalesDamageWithDistance)
+        {
+            return damage;
+        }
+
+        int distance = Mathf.Abs(unit.GetGridPosition().x - targetPosition.x) + Mathf.Abs(unit.GetGridPosition().z - targetPosition.z);
+        
+        // Linear scaling: max bonus at distance <= 1, 0 bonus at maxAttackDistance
+        float distanceRange = maxAttackDistance - 1f;
+        if (distanceRange <= 0) return damage + maxCloseRangeBonus;
+        
+        float distanceProgress = Mathf.Clamp01((distance - 1f) / distanceRange);
+        int bonusDamage = Mathf.RoundToInt(Mathf.Lerp(maxCloseRangeBonus, 0, distanceProgress));
+        
+        return damage + bonusDamage;
+    }
+
     public int GetWeaponDamage()
     {
         return damage;

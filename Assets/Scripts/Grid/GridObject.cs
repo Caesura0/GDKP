@@ -13,6 +13,8 @@ public class GridObject
     IDestructable destructable;
     CoverType coverType = CoverType.None;
     List<Unit> unitList;
+    private float worldY = 0f;
+
 
     public GridObject(GridSystem<GridObject> gridSystem, GridPosition gridPosition)
     {
@@ -62,6 +64,10 @@ public class GridObject
             return null;
         }
     }
+
+    public void SetWorldY(float y) => worldY = y;
+
+    public float GetWorldY() => worldY;
 
     public IInteractable GetInteractable()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-
+ 
     private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
 
 
@@ -30,13 +30,31 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(this);
         }
-
+        DontDestroyOnLoad(gameObject);
 
         volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, 1f);
 
     }
 
+    private void OnEnable()
+    {
+        if (UnitActionSystem.Instance != null)
+        {
+            UnitActionSystem.Instance.OnReloadActionStarted += Instance_OnReloadActionStarted;
+            UnitActionSystem.Instance.OnSelectedActionChange += Instance_OnSelectedActionChange;
+            UnitActionSystem.Instance.OnSelectedUnitChange += Instance_OnSelectedUnitChange;
+        }
+    }
 
+    private void OnDisable()
+    {
+        if (UnitActionSystem.Instance != null)
+        {
+            UnitActionSystem.Instance.OnReloadActionStarted -= Instance_OnReloadActionStarted;
+            UnitActionSystem.Instance.OnSelectedActionChange -= Instance_OnSelectedActionChange;
+            UnitActionSystem.Instance.OnSelectedUnitChange -= Instance_OnSelectedUnitChange;
+        }
+    }
 
     private void Start()
     {
@@ -44,9 +62,9 @@ public class SoundManager : MonoBehaviour
         SimpleDialogue.onTypeLetter += SimpleDialogue_onTypeLetter;
         ShootAction.onAnyShoot += ShootAction_onAnyShoot;
         ShotgunAction.onAnyAttack += ShotgunAction_onAnyAttack;
-        UnitActionSystem.Instance.OnReloadActionStarted += Instance_OnReloadActionStarted;
-        UnitActionSystem.Instance.OnSelectedActionChange += Instance_OnSelectedActionChange;
-        UnitActionSystem.Instance.OnSelectedUnitChange += Instance_OnSelectedUnitChange;
+        //UnitActionSystem.Instance.OnReloadActionStarted += Instance_OnReloadActionStarted;
+        //UnitActionSystem.Instance.OnSelectedActionChange += Instance_OnSelectedActionChange;
+        //UnitActionSystem.Instance.OnSelectedUnitChange += Instance_OnSelectedUnitChange;
         ExplodableCrate.onAnyBarrelExplosion += ExplodableBarrel_OnAnyBarrelExplosion;
         GrenadeProjectile.OnAnyGrenadeExploded += GrenadeProjectile_OnAnyGrenadeExploded;
         audioSource = GetComponent<AudioSource>();
@@ -55,7 +73,8 @@ public class SoundManager : MonoBehaviour
 
     private void GrenadeProjectile_OnAnyGrenadeExploded(object sender, System.EventArgs e)
     {
-        PlaySound(audioClipSO.barrelExplosion, transform.position);
+        PlaySound(audioClipSO.barrelExplosion, transform.position); 
+
     }
 
     private void ExplodableBarrel_OnAnyBarrelExplosion(object sender, System.EventArgs e)

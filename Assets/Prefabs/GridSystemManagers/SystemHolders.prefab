@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 859311096}
-  - component: {fileID: 859311095}
   m_Layer: 0
   m_Name: LevelScripting
   m_TagString: Untagged
@@ -32,19 +31,6 @@ Transform:
   m_Father: {fileID: 4895104684114978828}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &859311095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859311094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769a16b08157e234fb8ab0095d68ce6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: b4a57636a4cc64f6c822a6bd1aec36e9, type: 3}
 --- !u!1 &4895104682633935431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1106,7 @@ Transform:
   - {fileID: 761358657641927837}
   - {fileID: 859311096}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4895104684132684386
 GameObject:
@@ -1148,7 +1134,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4895104684132684386}
-  m_LocalRotation: {x: 0.422607, y: -0.0004960337, z: 0.00023129687, w: 0.9063129}
+  m_LocalRotation: {x: 0.42260697, y: -0.000495959, z: 0.00023126199, w: 0.9063129}
   m_LocalPosition: {x: 27.361916, y: 12.926022, z: 63.89157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1620,6 +1606,16 @@ PrefabInstance:
       propertyPath: gridVisualTypeMaterialList.Array.data[6].boarderMaterial
       value: 
       objectReference: {fileID: 2100000, guid: b2e348d39cd987a48957116ef11336a3, type: 2}
+    - target: {fileID: 1187773224812472280, guid: ab501ecb97a6b304792f9c24a1f9c8fb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187773224812472280, guid: ab501ecb97a6b304792f9c24a1f9c8fb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1187773224812472281, guid: ab501ecb97a6b304792f9c24a1f9c8fb,
         type: 3}
       propertyPath: width
@@ -1635,6 +1631,11 @@ PrefabInstance:
       propertyPath: debugGrid
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1187773224812472281, guid: ab501ecb97a6b304792f9c24a1f9c8fb,
+        type: 3}
+      propertyPath: walkableLayers.m_Bits
+      value: 576
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ab501ecb97a6b304792f9c24a1f9c8fb, type: 3}
@@ -1644,6 +1645,97 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 658424840}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1187773224324441041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1187773224812472281, guid: ab501ecb97a6b304792f9c24a1f9c8fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 658424840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187773224324441046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac58a9d0025b7ca4c90094251f99cec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1187773224324441046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1187773224812472286, guid: ab501ecb97a6b304792f9c24a1f9c8fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 658424840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1968843721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187773224324441046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7eaf91108420ce40a2fd64483f10d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelGrid: {fileID: 1187773224324441041}
+  blockedEdges:
+  - ax: 10
+    az: 14
+    bx: 10
+    bz: 15
+  - ax: 13
+    az: 14
+    bx: 13
+    bz: 15
+  - ax: 13
+    az: 13
+    bx: 13
+    bz: 14
+  - ax: 13
+    az: 14
+    bx: 14
+    bz: 14
+  - ax: 11
+    az: 18
+    bx: 11
+    bz: 19
+  - ax: 9
+    az: 17
+    bx: 10
+    bz: 17
+  - ax: 9
+    az: 14
+    bx: 10
+    bz: 14
+  - ax: 10
+    az: 13
+    bx: 10
+    bz: 14
+  - ax: 9
+    az: 13
+    bx: 10
+    bz: 13
+  - ax: 10
+    az: 12
+    bx: 10
+    bz: 13
+  - ax: 13
+    az: 12
+    bx: 13
+    bz: 13
+  - ax: 13
+    az: 13
+    bx: 14
+    bz: 13
+  bakeData: {fileID: 11400000, guid: 6c06c20415c6f9346a4be0b3a5685d8e, type: 2}
+  showGrid: 1
+  showWalkability: 1
+  showBlockedEdges: 1
+  showBounds: 1
+  showCoordinates: 1
+  colWalkable: {r: 0.2, g: 0.8, b: 0.3, a: 0.25}
+  colUnwalkable: {r: 0.9, g: 0.2, b: 0.2, a: 0.35}
+  colGrid: {r: 0.6, g: 0.6, b: 0.65, a: 0.4}
+  colBounds: {r: 1, g: 0.85, b: 0.2, a: 0.9}
+  colBlockedEdge: {r: 0.95, g: 0.15, b: 0.15, a: 1}
 --- !u!1001 &1891091192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1656,6 +1748,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 761358657381045860, guid: 64d27ee47f4459746bebc88f0ec795f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 761358657381045861, guid: 64d27ee47f4459746bebc88f0ec795f8,
         type: 3}
@@ -1839,17 +1936,17 @@ PrefabInstance:
     - target: {fileID: 7968502928080391054, guid: ded376dd9eb1283478c71f56a92fa555,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.422607
+      value: 0.42260697
       objectReference: {fileID: 0}
     - target: {fileID: 7968502928080391054, guid: ded376dd9eb1283478c71f56a92fa555,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0004960337
+      value: -0.000495959
       objectReference: {fileID: 0}
     - target: {fileID: 7968502928080391054, guid: ded376dd9eb1283478c71f56a92fa555,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00023129687
+      value: 0.00023126199
       objectReference: {fileID: 0}
     - target: {fileID: 7968502928080391054, guid: ded376dd9eb1283478c71f56a92fa555,
         type: 3}

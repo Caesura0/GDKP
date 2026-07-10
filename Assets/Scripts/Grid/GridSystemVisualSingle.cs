@@ -17,15 +17,16 @@ public class GridSystemVisualSingle : MonoBehaviour
     {
         meshRenderer.enabled = true;
         meshRenderer.material = material;
-        Vector3 nextPos = transform.position;
+        //Vector3 nextPos = transform.position;
 
-        nextPos.y = LevelGrid.Instance.GetLevelGridTransform().y + 1.8f;
-        RaycastHit hit;
-        Physics.Raycast(nextPos, Vector3.down, out hit, LevelGrid.Instance.GetWalkableLayers());
-        Vector3 newTargetPosition = transform.position;
-        newTargetPosition.y = hit.point.y + .1f;
+        //nextPos.y = LevelGrid.Instance.GetLevelGridTransform().y + 1.8f;
+        //RaycastHit hit;
+        //Physics.Raycast(nextPos, Vector3.down, out hit, LevelGrid.Instance.GetWalkableLayers());
+        //Vector3 newTargetPosition = transform.position;
+        //newTargetPosition.y = hit.point.y + .1f;
         
-        transform.position = newTargetPosition;
+        //transform.position = newTargetPosition;
+
     }
 
     //public void Hide()
